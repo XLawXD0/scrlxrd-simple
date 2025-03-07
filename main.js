@@ -89,7 +89,7 @@ global.loadDatabase = async function loadDatabase() {
 loadDatabase()
 
 //-- SESSION
-global.authFile = `sessions`
+global.authFile = `ScrLxrdSesi`
 const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFile)
 //const msgRetryCounterMap = (MessageRetryMap) => { }
 const msgRetryCounterMap = new Map()
@@ -112,7 +112,7 @@ opcion = '1'
 }
 if (!methodCodeQR && !methodCode && !fs.existsSync(`./${authFile}/creds.json`)) {
 do {
-opcion = await question('\n\n\n✳️ Ingrese el metodo de conexion\n\n\n🔺 1 : por código  QR\n🔺 2 : por CÓDIGO de 8 dígitos\n\n\n\n')
+opcion = await question('\n\n\n✳️ Pilih methode apa yang mau lu pake \n\n\n🔺 1 : Metode QR\n🔺 2 : Metode pairing code\n\n\n\n')
 if (!/^[1-2]$/.test(opcion)) {
 console.log('\n\n🔴 Ingrese solo una opción \n\n 1 o 2\n\n')
 }} while (opcion !== '1' && opcion !== '2' || fs.existsSync(`./${authFile}/creds.json`))
@@ -124,7 +124,7 @@ const connectionOptions = {
     logger: pino({ level: 'silent' }),
     printQRInTerminal: opcion === '1' || methodCodeQR,
     mobile: MethodMobile,
-    browser: opcion === '1' ? ['Senna', 'Safari', '2.0.0'] : methodCodeQR ? ['Senna', 'Safari', '2.0.0'] : ['Ubuntu', 'Chrome', '20.0.04'],
+    browser: opcion === '1' ? ['ScrLxrd', 'Safari', '2.0.0'] : methodCodeQR ? ['ScrLxrd', 'Safari', '2.0.0'] : ['Ubuntu', 'Chrome', '20.0.04'],
     auth: {
         creds: state.creds,
         keys: makeCacheableSignalKeyStore(state.keys, pino({ level: 'fatal' }).child({ level: 'fatal' })),
@@ -158,23 +158,23 @@ if (!fs.existsSync(`./${authFile}/creds.json`)) {
 if (opcion === '2' || methodCode) {
 opcion = '2'
 if (!conn.authState.creds.registered) {  
-if (MethodMobile) throw new Error('⚠️ Se produjo un Error en la API de movil')
+if (MethodMobile) throw new Error('⚠️ There was an error in the Mobile API')
 
 let addNumber
 if (!!phoneNumber) {
 addNumber = phoneNumber.replace(/[^0-9]/g, '')
 if (!Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
-console.log(chalk.bgBlack(chalk.bold.redBright("\n\n✴️ Su número debe comenzar  con el codigo de pais")))
+console.log(chalk.bgBlack(chalk.bold.redBright("\n\n✴️ Your number must start with the country code")))
 process.exit(0)
 }} else {
 while (true) {
-addNumber = await question(chalk.bgBlack(chalk.bold.greenBright("\n\n✳️ Escriba su numero\n\nEjemplo: 5491168xxxx\n\n")))
+addNumber = await question(chalk.bgBlack(chalk.bold.greenBright("\n\n✳️ Masukin nomer lu!\n\nContoh: 628991168xxxx\n\n")))
 addNumber = addNumber.replace(/[^0-9]/g, '')
 
 if (addNumber.match(/^\d+$/) && Object.keys(PHONENUMBER_MCC).some(v => addNumber.startsWith(v))) {
 break 
 } else {
-console.log(chalk.bgBlack(chalk.bold.redBright("\n\n✴️ Asegúrese de agregar el código de país")))
+console.log(chalk.bgBlack(chalk.bold.redBright("\n\n✴️ Be sure to add the country code")))
 }}
 rl.close()  
 } 
@@ -182,8 +182,8 @@ rl.close()
         setTimeout(async () => {
             let codeBot = await conn.requestPairingCode(addNumber)
             codeBot = codeBot?.match(/.{1,4}/g)?.join("-") || codeBot
-            console.log(chalk.yellow('\n\n🍏 introduce el código en WhatsApp.'))
-            console.log(chalk.black(chalk.bgGreen(`\n🟣  Su Código es: `)), chalk.black(chalk.red(codeBot)))
+            console.log(chalk.yellow('\n\n🍏 Enter the code in WhatsApp.'))
+            console.log(chalk.black(chalk.bgGreen(`\n🟣  Kode nya: `)), chalk.black(chalk.red(codeBot)))
         }, 3000)
 }}
 }
@@ -261,14 +261,14 @@ global.reloadHandler = async function (restatConn) {
     conn.ev.off('creds.update', conn.credsUpdate)
   }
 
-  conn.welcome = 'Hola, @user\nBienvenido a @group'
-  conn.bye = 'adiós @user'
-  conn.spromote = '@user promovió a admin'
-  conn.sdemote = '@user degradado'
-  conn.sDesc = 'La descripción ha sido cambiada a \n@desc'
-  conn.sSubject = 'El nombre del grupo ha sido cambiado a \n@group'
-  conn.sIcon = 'El icono del grupo ha sido cambiado'
-  conn.sRevoke = 'El enlace del grupo ha sido cambiado a \n@revoke'
+  conn.welcome = 'Hi, @user\nSelamat datang di @group'
+  conn.bye = 'Al-fatihah @user'
+  conn.spromote = '@user dah jadi atmin'
+  conn.sdemote = '@user wkwk kesian dh gajadi atmin'
+  conn.sDesc = 'Deskripsi dh diganti jadi \n@desc'
+  conn.sSubject = 'Nama grup dh ganti jadi \n@group'
+  conn.sIcon = 'Icon grup dah ganti'
+  conn.sRevoke = 'Link grup dh ganti jadi \n@revoke'
   conn.handler = handler.handler.bind(global.conn)
   conn.participantsUpdate = handler.participantsUpdate.bind(global.conn)
   conn.groupsUpdate = handler.groupsUpdate.bind(global.conn)
@@ -307,12 +307,12 @@ global.reload = async (_ev, filename) => {
   if (pluginFilter(filename)) {
     let dir = global.__filename(join(pluginFolder, filename), true)
     if (filename in global.plugins) {
-      if (existsSync(dir)) conn.logger.info(`🌟 Plugin Actualizado - '${filename}'`)
+      if (existsSync(dir)) conn.logger.info(`🌟 Plugin Updated - '${filename}'`)
       else {
-        conn.logger.warn(`🗑️ Plugin Eliminado - '${filename}'`)
+        conn.logger.warn(`🗑️ Plugin terhapus - '${filename}'`)
         return delete global.plugins[filename]
       }
-    } else conn.logger.info(`✨ Nuevo plugin - '${filename}'`)
+    } else conn.logger.info(`✨ New plugin - '${filename}'`)
     let err = syntaxerror(readFileSync(dir), filename, {
       sourceType: 'module',
       allowAwaitOutsideFunction: true
@@ -374,5 +374,5 @@ async function _quickTest() {
 }
 
 _quickTest()
-  .then(() => conn.logger.info('✅ Prueba rápida realizado!'))
+  .then(() => conn.logger.info('✅ Quick test performed!'))
   .catch(console.error)

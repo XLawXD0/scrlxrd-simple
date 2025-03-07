@@ -1,5 +1,5 @@
 { 
-    "name": "dylux-bot",
+    "name": "scrlxrd-simple",
     "version": "2.0.0",
     "description": "Customizable WhatsApp Bot",
     "main": "index.js",
@@ -20,22 +20,22 @@
         "whatsapp",
         "js-whatsapp",
         "whatsapp",
-        "dylux-bot",
+        "scrlxrd-simple",
         "senna",
         "multi-device",
-        "senna-bot",
+        "scrlxrd-bot",
         "baileys-md"
     ],
-    "homepage": "https://github.com/FG98F/dylux-bot",
+    "homepage": "https://github.com/XLawXD0/scrlxrd-simple",
     "author": {
-        "name": "FG98"
+        "name": "XLaw XD"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/FG98F/dylux-bot.git"
+        "url": "git+https://github.com/XLawXD0/scrlxrd-simple.git"
     },
     "bugs": {
-        "url": "https://github.com/FG98F/dylux-bot/issues"
+        "url": "https://github.com/XLawXD0/scrlxrd-simple/issues"
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {

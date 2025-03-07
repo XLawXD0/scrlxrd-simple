@@ -1,4 +1,4 @@
- import { smsg } from './lib/simple.js'
+import { smsg } from './lib/simple.js'
 import { format } from 'util' 
 import { fileURLToPath } from 'url'
 import path, { join } from 'path'
@@ -84,7 +84,7 @@ export async function handler(chatUpdate) {
                 if (!('genero' in user))
                     user.genero = 'Indeciso'
                 if (!('language' in user))
-                    user.language = 'es'
+                    user.language = 'id'
                 if (!('prem' in user))
                     user.prem = false
                 if (!user.premiumTime) 
@@ -113,7 +113,7 @@ export async function handler(chatUpdate) {
                     autolevelup: false,
                     chatbot: false,
                     genero: 'Indeciso',
-                    language: 'es',
+                    language: 'id',
                     prem: false,
                     premiumTime: 0,
                     namebebot: '',
@@ -194,7 +194,7 @@ if (this.user && this.user.jid) {
     if (!('solopv' in settings)) settings.solopv = false // Responde solo por DM
     if (!('sologp' in settings)) settings.sologp = false // Responde solo en grupos
 } else {
-    console.error("🌿 this.user.jid no está definido.")
+    console.error("🌿 this.user.jid is not defined.")
 }
         //---- AA    
             
@@ -386,11 +386,11 @@ if (this.user && this.user.jid) {
                 else
                     m.exp += xp
                 if (!isPrems && plugin.diamond && global.db.data.users[m.sender].diamond < plugin.diamond * 1) {
-                    this.reply(m.chat, `✳️ Tus diamantes se agotaron\nuse el siguiente comando para comprar más diamantes\n\n*${usedPrefix}buy*`, m)
+                    this.reply(m.chat, `✳️ Your diamonds were exhausted\nUse the following command to buy more diamonds\n\n*${usedPrefix}buy*`, m)
                     continue // Limit habis
                 }
                 if (plugin.level > _user.level) {
-                    this.reply(m.chat, `✳️ nivel requerido ${plugin.level} para usar este comando. \nTu nivel ${_user.level}`, m)
+                    this.reply(m.chat, `✳️ level required ${plugin.level} To use this command. \nYour level ${_user.level}`, m)
                     continue // If the level has not been reached
                 }
                 let extra = {
@@ -440,7 +440,7 @@ if (this.user && this.user.jid) {
                         }
                     }
                     if (m.diamond)
-                        m.reply(`Utilizaste *${+m.diamond}* 💎`)
+                      m.reply(`Diamond usage *${+m.diamond}* 💎`)
                 }
                 break
             }
@@ -520,8 +520,8 @@ export async function participantsUpdate({ id, participants, action }) {
             if (chat.welcome) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                 for (let user of participants) {
-                    let pp = 'https://i.ibb.co/1ZxrXKJ/avatar-contact.jpg'
-                    let ppgp = 'https://i.ibb.co/1ZxrXKJ/avatar-contact.jpg'
+                    let pp = 'https://files.catbox.moe/ifx2y7.png'
+                    let ppgp = 'https://files.catbox.moe/ifx2y7.png'
                     try {
                         pp = await this.profilePictureUrl(user, 'image')
                         ppgp = await this.profilePictureUrl(id, 'image')
@@ -604,11 +604,11 @@ export async function deleteUpdate(message) {
         if (chat.delete)
             return
         await this.reply(msg.chat, `
-≡ Borró un mensaje  
+≡ He deleted a message
 ┌─⊷  𝘼𝙉𝙏𝙄 𝘿𝙀𝙇𝙀𝙏𝙀 
-▢ *Nombre :* @${participant.split`@`[0]} 
+▢ *Number :* @${participant.split`@`[0]} 
 └─────────────
-Para desactivar esta función, escriba 
+For disable this, type 
 */off antidelete*
 *.enable delete*
 `.trim(), msg, {
@@ -631,7 +631,7 @@ global.dfail = (type, m, conn) => {
         admin: `🛡️ ${mssg.adminH}`,
         botAdmin: `💥 ${mssg.botAdmin}`,
         unreg: `📇 ${mssg.unregH}`,
-        restrict: '🔐 Esta característica está *deshabilitada*'
+        restrict: '🔐 This feature is *disabled*'
     }[type]
     //if (msg) return conn.sendButton(m.chat, msg, mssg.ig, null, [['🔖 OK', 'khajs'], ['⦙☰ MENU', '/menu'] ], m)
     if (msg) return m.reply(msg)
@@ -640,6 +640,6 @@ global.dfail = (type, m, conn) => {
 let file = global.__filename(import.meta.url, true)
 watchFile(file, async () => {
     unwatchFile(file)
-    console.log(chalk.magenta("✅  Se actualizo 'handler.js'"))
+    console.log(chalk.magenta("✅  It was updated 'handler.js'"))
     if (global.reloadHandler) console.log(await global.reloadHandler())
 }) 

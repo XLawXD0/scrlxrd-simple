@@ -1,4 +1,4 @@
-console.log('✅ Iniciando...')
+console.log('✅ Initialized...')
 
 import { join, dirname } from 'path'
 import { createRequire } from 'module';
@@ -24,19 +24,19 @@ const rl = createInterface(process.stdin, process.stdout)
 const app = express()
 const port = process.env.PORT || 8080;
 
-say('Senna FG98', {
+say('ScrLxrd XLaw XD', {
   font: 'pallet',
   align: 'center',
   gradient: ['red', 'magenta']
 })
-say(`senna-bot By FG98 Ig: @fg98_ff`, {
+say(`scrlxrd-simple By XLaw XD Ig: @dirgasa.xd`, {
   font: 'console',
   align: 'center',
   gradient: ['cyan', 'magenta']
 })
 
 app.listen(port, () => {
-  console.log(chalk.green(`🌐 Puerto ${port} esta abierto`));
+  console.log(chalk.green(`🌐 port ${port} is open`));
 });
 
 var isRunning = false
@@ -72,7 +72,7 @@ async function start(file) {
   //---
   p.on('exit', (_, code) => {
     isRunning = false
-    console.error('❎ Ocurrió un error inesperado:', code)
+    console.error('❎ An unexpected mistake happened:', code)
     start('main.js'); //
 
     if (code === 0) return
@@ -88,24 +88,24 @@ async function start(file) {
   console.log(chalk.yellow(`💾 Total RAM: ${ramInGB.toFixed(2)} GB`));
   const freeRamInGB = os.freemem() / (1024 * 1024 * 1024);
   console.log(chalk.yellow(`💽 Free RAM: ${freeRamInGB.toFixed(2)} GB`));
-  console.log(chalk.yellow(`📃 Script by FG98`));
+  console.log(chalk.yellow(`📃 Script by XLaw XD`));
 
   const packageJsonPath = path.join(path.dirname(currentFilePath), './package.json');
     try {
     const packageJsonData = await fsPromises.readFile(packageJsonPath, 'utf-8');
     const packageJsonObj = JSON.parse(packageJsonData);
-    console.log(chalk.blue.bold(`\n📦 Información del Paquete`));
+    console.log(chalk.blue.bold(`\n📦 Package information`));
     console.log(chalk.cyan(`Nombre: ${packageJsonObj.name}`));
     console.log(chalk.cyan(`Versión: ${packageJsonObj.version}`));
     console.log(chalk.cyan(`Descripción: ${packageJsonObj.description}`));
     console.log(chalk.cyan(`Autor: ${packageJsonObj.author.name}`));
   } catch (err) {
-    console.error(chalk.red(`❌ No se pudo leer el archivo package.json: ${err}`));
+    console.error(chalk.red(`❌ The file could not be read package.json: ${err}`));
   }
 
 
-  console.log(chalk.blue.bold(`\n⏰ Hora Actual`));
-  const currentTime = new Date().toLocaleString('es-ES', { timeZone: 'America/Argentina/Buenos_Aires' })
+  console.log(chalk.blue.bold(`\n⏰ Current time`));
+  const currentTime = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })
   //const currentTime = new Date().toLocaleString();
   console.log(chalk.cyan(`${currentTime}`));
 

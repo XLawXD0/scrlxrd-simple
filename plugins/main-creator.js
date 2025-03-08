@@ -3,9 +3,9 @@ function handler(m) {
    let data = global.owner.filter(([id, isCreator]) => id && isCreator);
 
     let numberowner = data[0]?.[0] || ''
-    let gmail = "fg98ff@gmail.com"
+    let gmail = "dirgasa1202@gmail.com"
     let instagram = fgig
-    let onum = 'Número del creador'
+    let onum = 'Creator Number'
 
     const contacts = data.map(([id, name]) => [id, name, numberowner, gmail, instagram, onum])
 
@@ -14,6 +14,6 @@ function handler(m) {
 }
 handler.help = ['owner']
 handler.tags = ['main']
-handler.command = ['owner', 'creator', 'creador', 'dueño', 'fgowner'] 
+handler.command = ['owner', 'creator'] 
 
 export default handler

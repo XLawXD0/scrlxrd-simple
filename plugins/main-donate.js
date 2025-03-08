@@ -1,26 +1,11 @@
+import fetch from 'node-fetch';
 
-let handler = async(m, { conn, usedPrefix, command }) => {
+let handler = async (m, { conn, command }) => {
+    let buffer = await fetch(`https://telegra.ph/file/fcb914d2617e9f64b2557.jpg`).then(res => res.buffer());
+    conn.sendFile(m.chat, buffer, 'hasil.jpg', `┏━ꕥ〔 *Payment* 〕ꕥ━⬣┃✾ PULSA  [083821123163]┃✾ Dana  [083821123163]┗━━━━ꕥ┏━━ꕥ〔 *NOTE* 〕ꕥ━⬣┃ Kirim bukti tf ke .owner┃ Jika mau donasi kirim saja kawan :D┃ Thx slurr┗━━━━ꕥ`, m);
+};
 
-    let don = `
-≡ ${mssg.donate}
+handler.help = handler.command = ['donasi', 'donate', 'pay', 'payment'];
+handler.tags = ['main'];
 
-▢ *PayPal*
-• *Link :* https://paypal.me/fg98f
-
-▢ *Mercado Pago Arg*
-• *Alias :* fgmods
-
-▢ *Naranja X Arg*
-• *Alias :* fgmods2
-`
-let img = 'https://i.ibb.co/37FP2bk/donate.jpg'
-conn.sendFile(m.chat, img, 'img.jpg', don, m, null, rpyp)
-//conn.sendPayment(m.chat, '2000', 'USD', don, m.sender, m)
-}
-
-handler.help = ['donate']
-handler.tags = ['main']
-handler.command = ['apoyar', 'donate', 'donar'] 
-
-export default handler
-
+export default handler;

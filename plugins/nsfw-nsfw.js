@@ -2,7 +2,7 @@
 import fetch from 'node-fetch'
 let handler = async (m, { conn, usedPrefix, command }) => {
 	
-	if (!global.db.data.chats[m.chat].nsfw) throw `🚫 ${mssg.gpNsfw(usedPrefix)}`
+	/*if (!global.db.data.chats[m.chat].nsfw) throw `🚫 ${mssg.gpNsfw(usedPrefix)}`*/
    let user = global.db.data.users[m.sender].age
    if (user < 17) throw `❎ ${mssg.nsfwAge}`
    

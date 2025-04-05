@@ -4,7 +4,7 @@ import fg from 'senna-fg'
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 
  let chat = global.db.data.chats[m.chat]
-  if (!chat.nsfw) throw `🚫 ${mssg.gpNsfw(usedPrefix)}`
+  /*if (!chat.nsfw) throw `🚫 ${mssg.gpNsfw(usedPrefix)}`*/
   let user = global.db.data.users[m.sender].age
   if (user < 17) throw `❎ ${mssg.nsfwAge}`
   if (!text) throw `✳️ ${mssg.searchTo('xnxx.com', usedPrefix, command)}`

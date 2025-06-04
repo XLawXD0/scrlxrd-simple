@@ -177,7 +177,7 @@ if (!isInit) {
 conn.ev.off('messages.upsert', conn.handler)
 conn.ev.off('group-participants.update', conn.participantsUpdate)
 conn.ev.off('groups.update', conn.groupsUpdate)
-conn.ev.off('message.delete', conn.onDelete)
+//conn.ev.off('message.delete', conn.onDelete)
 conn.ev.off('call', conn.onCall)
 conn.ev.off('connection.update', conn.connectionUpdate)
 conn.ev.off('creds.update', conn.credsUpdate)
@@ -191,14 +191,14 @@ conn.sdemote = global.conn.sdemote + ''
 conn.handler = handler.handler.bind(conn)
 conn.participantsUpdate = handler.participantsUpdate.bind(conn)
 conn.groupsUpdate = handler.groupsUpdate.bind(conn)
-conn.onDelete = handler.deleteUpdate.bind(conn)
+//conn.onDelete = handler.deleteUpdate.bind(conn)
 conn.connectionUpdate = connectionUpdate.bind(conn)
 conn.credsUpdate = saveCreds.bind(conn, true)
 
 conn.ev.on('messages.upsert', conn.handler)
 conn.ev.on('group-participants.update', conn.participantsUpdate)
 conn.ev.on('groups.update', conn.groupsUpdate)
-conn.ev.on('message.delete', conn.onDelete)
+//conn.ev.on('message.delete', conn.onDelete)
 conn.ev.on('connection.update', conn.connectionUpdate)
 conn.ev.on('creds.update', conn.credsUpdate)
 isInit = false
@@ -209,9 +209,9 @@ creloadHandler(false)
 bbts()
 
 }
-handler.help = ['botclone']
+handler.help = ['jadibot']
 handler.tags = ['bebot']
-handler.command = ['bebot', 'serbot', 'jadibot', 'botclone', 'clonebot']
+handler.command = ['jadibot', 'botclone', 'clonebot']
 handler.rowner = false
 
 export default handler

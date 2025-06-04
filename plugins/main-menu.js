@@ -5,44 +5,60 @@ import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 //import { plugins } from '../lib/plugins.js'
 let tags = {
-  'main': 'ACERCA DE',
-  'bebot': 'SUB BOTS',
-  'game': 'JUEGOS',
-  'econ': 'NIVEL & ECONOMIA',
-  'rg': 'REGISTRO',
+  'main': 'MAIN MENU',
+  'bebot': 'JADIBOT',
+  'game': 'GAMES',
+  'econ': 'LEVEL & ECOMOMY',
+  'rg': 'REGISTER',
   'sticker': 'STICKER',
-  'img': 'IMAGEN',
+  'img': 'IMAGE',
   'maker': 'MAKER',
   'prem': 'PREMIUM',
-  'group': 'GRUPO',
-  'nable': 'EN/DISABLE OPCIONES', 
+  'group': 'GROUP',
+  'nable': 'EN/DISABLE OPTION', 
   'nime': 'ANIME',
-  'rnime': 'ANIME REACCION',
-  'dl': 'DESCARGAS',
+  'rnime': 'ANIME REACTION',
+  'dl': 'DOWNLOADER',
   'tools': 'TOOLS',
   'fun': 'FUN',
   'cmd': 'DATABASE',
   'nsfw': 'NSFW +18',
   'ansfw': 'NSFW ANIME', 
   'owner': 'OWNER', 
-  'advanced': 'AVANZADO',
+  'advanced': 'ADVANCED',
 }
 const defaultMenu = {
   before: `
-◈ ━━━━━ *DyLux ┃ ˢᵉⁿⁿᵃ* ━━━━━ ◈
+◈ ━━━━━ *ＳｃｒＬｘｒｄ Ｓｉｍｐｌｅ* ━━━━━ ◈
+
+⣿⣿⡿⣻⣿⡿⠀⣾⠀⡟⣿⢸⣿⡿⡇⢻⡄⢹⡟⣧⢩⢿⣿⣿⣿⣟⣿⣿⣿
+⣿⡟⣶⣿⣽⠇⡘⡇⣰⠇⣿⡇⣿⢇⢷⡘⡇⠀⣿⢈⠈⡜⣿⣿⣿⣿⣿⣿⣿
+⡟⣸⣿⣿⣿⠀⣼⠃⢽⠀⢻⡇⣿⠘⠘⠓⢃⣃⢸⢈⢆⢳⢿⣿⣿⣿⡟⣞⣏
+⣷⣿⡧⣿⣿⢀⣥⠀⡘⢸⣸⣷⡋⢧⡇⡾⡀⠛⠊⣼⣆⢸⣼⣿⣿⣿⣧⠜⣼
+⣿⢸⣇⣇⠀⢸⠏⠀⠁⢸⣇⡿⠁⣼⡇⣅⣀⡄⠀⢁⡙⢸⡏⣿⣿⡏⣿⢸⡸
+⣿⢿⢻⡾⡀⠈⣴⠚⠀⢰⣿⡀⡀⢿⣇⣿⣇⢄⡤⣸⡿⢸⠁⣿⣿⣧⣿⣶⡜
+⣿⣾⢸⣷⣣⢲⣜⢆⣒⣼⣿⣷⣷⣼⣿⣿⣿⣖⣺⣭⣿⠁⠟⣿⣿⣿⣽⣿⡷
+⣿⡿⢸⣿⡇⢸⣿⣿⣷⣟⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄⣼⣿⣿⣿⣿⡟⣡
+⣿⣱⢸⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⡿⣿⣿⡏⣿⣷⣿
+⢧⡟⢸⣿⡇⣏⢿⣿⣿⣿⣿⣿⠿⢿⣿⣿⣿⣿⣿⣿⣿⢋⠀⣿⣿⠇⢸⢻⣿
+⣮⡇⡌⡏⡇⣿⠀⣙⠻⣿⣿⣿⣉⣽⡿⣿⣿⣿⡿⠫⠀⢀⢰⣿⡟⢰⠘⣾⣷
+⣿⢳⠀⠹⣿⢻⢀⣴⣬⣬⣴⣴⣭⣽⣾⣶⣶⣿⣿⣷⣾⣿⣼⣿⢡⣿⢰⣿⣿
+⣿⠸⢠⣷⣹⡜⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢧⡿⣳⣿⣇⣿⣿⣿
+⣿⢀⡏⣿⣧⢧⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⢞⣽⣿⣿⣾⣿⣿⣿
+⣟⣢⣵⣿⣿⣯⡀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⣠⣿⣿⣿⣿⣿⣿⣿⣿
  
-👋🏻 Hola! *%name*
-👥 Usuarios : %totalreg
-🟢 Tiempo activo : %muptime
+👋🏻 Halo! *%name*
+👥 Users : %totalreg
+🟢 Aktif selama : %muptime
 %sbot
 ▢ ADD
-• https://instagram.com/fg98_ff
+• https://instagram.com/dirgas.xd
 ────────────
 %readmore
-  ≡ *LISTA DE MENUS*
+  ≡ *LIST MENU*
 
 Ⓟ = Premium
-ⓓ = Diamantes
+ⓓ = Diamond
 `.trimStart(),
   header: '┌─⊷ *%category*',
   body: '▢ %cmd %isdiamond %isPremium',
@@ -160,7 +176,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     m.react('📚') 
     
   } catch (e) {
-    conn.reply(m.chat, '❎ Lo sentimos, el menú tiene un error', m)
+    conn.reply(m.chat, '❎ Menunya lagi error cui, laporin ke owner gih.', m)
     throw e
   }
 }

@@ -138,7 +138,7 @@ export async function handler(chatUpdate) {
                 if (!('sDemote' in chat))
                     chat.sDemote = ''
                 if (!('delete' in chat))
-                    chat.delete = true
+                    chat.delete = false
                 if (!('antiLink' in chat))
                     chat.antiLink = false
                 if (!('viewonce' in chat))
@@ -205,8 +205,8 @@ if (this.user && this.user.jid) {
         if (opts['nyimak'])  return
         if (!m.fromMe && opts['self'])  return
         if (settings.solopv && m.chat.endsWith('g.us')) return  
-        if (settings.sologp && !m.chat.endsWith('g.us')) return
-        //if (settings.sologp && !m.chat.endsWith('g.us') && !/jadibot|bebot|getcode|serbot|bots|stop|support|donate|off|on|s|tiktok|code|newcode|join/gim.test(m.text)) return 
+        //if (settings.sologp && !m.chat.endsWith('g.us')) return
+        if (settings.sologp && !m.chat.endsWith('g.us') && !/jadibot|bebot|getcode|serbot|bots|stop|support|donate|off|on|s|tiktok|code|newcode|join/gim.test(m.text)) return 
         if (opts['swonly'] && m.chat !== 'status@broadcast')  return
         if (typeof m.text !== 'string')
             m.text = ''
@@ -592,7 +592,7 @@ export async function groupsUpdate(groupsUpdate) {
     }
 }
 
-export async function deleteUpdate(message) {
+/* export async function deleteUpdate(message) {
     try {
         const { fromMe, id, participant } = message
         if (fromMe)
@@ -609,8 +609,8 @@ export async function deleteUpdate(message) {
 ▢ *Number :* @${participant.split`@`[0]} 
 └─────────────
 For disable this, type 
-*/off antidelete*
-*.enable delete*
+/off antidelete
+.enable delete
 `.trim(), msg, {
             mentions: [participant]
         })
@@ -618,7 +618,7 @@ For disable this, type
     } catch (e) {
         console.error(e)
     }
-}
+}*/
 
 global.dfail = (type, m, conn) => {
     let msg = {
